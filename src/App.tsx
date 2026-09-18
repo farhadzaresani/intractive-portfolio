@@ -25,7 +25,7 @@ function AppShell() {
     <div className="app">
       <div className="canvas-wrap">
         <Scene />
-      </div>
+      </div> 
       <div className="vignette" aria-hidden />
       <div className="scanlines" aria-hidden />
       <BootScreen />
