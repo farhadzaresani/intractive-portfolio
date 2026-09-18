@@ -15,7 +15,7 @@ export function Hud() {
   return (
     <div id="crt-overlay" className="crt-on-screen" role="application" aria-label="FZ-DOS">
       <header className="crt-ui__bar">
-        <span>FZ-DOS v1.0</span>
+        <span>FZ-DOS v1.1</span>
         <button type="button" className="crt-ui__exit" onClick={blurMonitor}>
           EXIT
         </button>
