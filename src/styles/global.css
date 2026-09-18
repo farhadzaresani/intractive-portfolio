@@ -120,8 +120,39 @@ a {
   font-size: clamp(1.35rem, 5vw, 2.75rem);
   line-height: 1.35;
   margin: 0;
-  color: var(--cream);
-  text-shadow: 0 0 24px rgba(216, 126, 12, 0.45);
+  color: #ffd4a0;
+  text-shadow:
+    0 0 4px #ff6a18,
+    0 0 12px #ff6a18,
+    0 0 28px rgba(255, 106, 24, 0.85),
+    0 0 56px rgba(255, 106, 24, 0.45);
+  animation: neon-flicker 4.5s infinite;
+}
+
+@keyframes neon-flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 4px #ff6a18,
+      0 0 12px #ff6a18,
+      0 0 28px rgba(255, 106, 24, 0.85),
+      0 0 56px rgba(255, 106, 24, 0.45);
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.72;
+    text-shadow:
+      0 0 2px #ff6a18,
+      0 0 6px rgba(255, 106, 24, 0.4);
+  }
 }
 
 .boot__tag {
@@ -407,4 +438,367 @@ a {
   .contact-list li {
     grid-template-columns: 1fr;
   }
+
+  .dos-icons {
+    grid-template-columns: repeat(2, minmax(0, 7rem));
+  }
 }
+
+/* —— FZ-DOS desktop (after zoom into CRT) —— */
+.dos-desktop {
+  position: absolute;
+  inset: 8% 12%;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  background: #031a03;
+  border: 4px solid #1a1a1a;
+  box-shadow:
+    inset 0 0 0 3px #0a3d0a,
+    inset 0 0 40px rgba(0, 255, 100, 0.08),
+    0 0 0 6px #333,
+    0 20px 60px rgba(0, 0, 0, 0.7);
+  animation: panel-in 0.35s ease-out;
+  overflow: hidden;
+}
+
+.dos-desktop__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0.75rem;
+  background: #33ff66;
+  color: #031a03;
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+.dos-desktop__exit {
+  font-family: var(--font-display);
+  font-size: 0.45rem;
+  padding: 0.35rem 0.55rem;
+  background: #031a03;
+  color: #33ff66;
+  border: 2px solid #031a03;
+}
+
+.dos-desktop__exit:hover {
+  background: #0a3d0a;
+}
+
+.dos-desktop__screen {
+  flex: 1;
+  padding: 1rem 1.25rem 1.25rem;
+  overflow: auto;
+  color: #33ff66;
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  text-shadow: 0 0 6px rgba(51, 255, 102, 0.35);
+}
+
+.dos-desktop__prompt {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+}
+
+.dos-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+.dos-icons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 8rem));
+  gap: 1.25rem 1.5rem;
+  justify-content: start;
+  margin-bottom: 1.5rem;
+}
+
+.dos-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  color: #33ff66;
+  text-align: center;
+}
+
+.dos-icon:hover .dos-icon__box,
+.dos-icon.is-active .dos-icon__box {
+  background: #33ff66;
+  color: #031a03;
+}
+
+.dos-icon__box {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: grid;
+  place-items: center;
+  border: 3px solid #33ff66;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  background: transparent;
+}
+
+.dos-icon__name {
+  font-family: var(--font-display);
+  font-size: 0.42rem;
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+.dos-desktop__hint {
+  margin: 0;
+  opacity: 0.7;
+  font-size: 1.1rem;
+}
+
+.panel-layer--dos {
+  background: rgba(0, 20, 0, 0.55);
+  z-index: 13;
+}
+
+.panel-layer--dos .os-window {
+  border-color: #33ff66;
+  background: #031a03;
+  box-shadow: 0 0 0 2px #0a3d0a, 8px 8px 0 rgba(0, 0, 0, 0.55);
+  color: #33ff66;
+}
+
+.panel-layer--dos .os-window__bar {
+  background: #33ff66;
+  color: #031a03;
+}
+
+.panel-layer--dos .os-window__close {
+  background: #031a03;
+  color: #33ff66;
+}
+
+.panel-layer--dos .panel-lead,
+.panel-layer--dos .panel-list,
+.panel-layer--dos .skills-tags,
+.panel-layer--dos .work-item__head strong {
+  color: #b8ffc8;
+}
+
+.panel-layer--dos .panel-h,
+.panel-layer--dos .work-item__project,
+.panel-layer--dos a {
+  color: #66ff99;
+}
+
+.panel-layer--dos .panel-meta,
+.panel-layer--dos .work-item__stack,
+.panel-layer--dos .panel-list li span {
+  color: #6aab7a;
+}
+
+.dos-backdrop-close {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* —— FZ-DOS pinned to the CRT glass (not a page modal) —— */
+.crt-on-screen {
+  position: fixed;
+  z-index: 12;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #031a03;
+  color: #33ff66;
+  box-shadow: inset 0 0 18px rgba(0, 255, 80, 0.12);
+  font-size: 16px;
+}
+
+.crt-on-screen__body {
+  flex: 1;
+  min-height: 0;
+  padding: 0.45rem 0.55rem 0.55rem;
+  overflow: auto;
+}
+
+.crt-ui__prompt {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  color: #66aa66;
+}
+
+.crt-ui__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0.28rem 0.45rem;
+  background: #33ff66;
+  color: #031a03;
+  font-family: var(--font-display);
+  font-size: 0.42rem;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.crt-ui__exit {
+  font-family: var(--font-display);
+  font-size: 0.42rem;
+  padding: 0.35rem 0.55rem;
+  background: #031a03;
+  color: #33ff66;
+  border: 1px solid #031a03;
+  cursor: pointer;
+}
+
+.crt-ui__exit:hover {
+  background: #0a3d0a;
+}
+
+.crt-ui__icons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 7.5rem));
+  gap: 1.1rem 1.25rem;
+  justify-content: start;
+  margin: 1rem 0;
+}
+
+.crt-ui__icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  color: #33ff66;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.crt-ui__icon:hover .crt-ui__icon-box {
+  background: #33ff66;
+  color: #031a03;
+}
+
+.crt-ui__icon-box {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: grid;
+  place-items: center;
+  border: 3px solid #33ff66;
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.crt-ui__icon-name {
+  font-family: var(--font-display);
+  font-size: 0.4rem;
+  line-height: 1.35;
+  text-align: center;
+  word-break: break-all;
+}
+
+.crt-ui__hint {
+  margin: 8px 0 0;
+  font-size: 1.1rem;
+  color: #6aab7a;
+}
+
+.crt-ui__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  min-height: 0;
+}
+
+.crt-on-screen .os-window {
+  width: 100%;
+  max-height: none;
+  flex: 1;
+  min-height: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #33ff66;
+}
+
+.crt-on-screen .os-window__body {
+  padding: 0.35rem 0.15rem 0.2rem;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.crt-ui__panel .os-window__bar {
+  background: #33ff66;
+  color: #031a03;
+}
+
+.crt-ui__panel .os-window__close {
+  background: #031a03;
+  color: #33ff66;
+}
+
+.crt-ui__panel .panel-lead,
+.crt-ui__panel .panel-list,
+.crt-ui__panel .skills-tags,
+.crt-ui__panel .work-item__head strong {
+  color: #b8ffc8;
+}
+
+.crt-ui__panel .panel-h,
+.crt-ui__panel .work-item__project,
+.crt-ui__panel a {
+  color: #66ff99;
+}
+
+.crt-ui__panel .panel-meta,
+.crt-ui__panel .work-item__stack,
+.crt-ui__panel .panel-list li span {
+  color: #6aab7a;
+}
+
+.crt-ui__back {
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-size: 0.4rem;
+  padding: 0.4rem 0.55rem;
+  background: transparent;
+  color: #33ff66;
+  border: 1px solid #33ff66;
+  cursor: pointer;
+}
+
+.crt-ui__back:hover {
+  background: #33ff66;
+  color: #031a03;
+}
+
+@media (max-width: 900px) {
+  .dos-desktop {
+    inset: 4% 4%;
+  }
+
+  .dos-icons {
+    grid-template-columns: repeat(2, minmax(0, 8rem));
+  }
+
+  .crt-ui__icons {
+    grid-template-columns: repeat(2, minmax(0, 7.5rem));
+  }
+}
+

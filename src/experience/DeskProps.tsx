@@ -126,8 +126,8 @@ function PaperAndPen({ position }: { position: [number, number, number] }) {
 export function DeskProps() {
   return (
     <group position={[0, 0.79, 0.72]}>
-      <PaperAndPen position={[0.05, 0, 0.02]} />
-      <CoffeeCup position={[-0.85, 0.0, 0.05]} />
+      <PaperAndPen position={[-1.35, 0, 0.02]} />
+      <CoffeeCup position={[2.05, 0.0, 0.05]} />
     </group>
   )
 }

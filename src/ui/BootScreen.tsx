@@ -15,7 +15,7 @@ export function BootScreen() {
         <button type="button" className="boot__cta" onClick={enter}>
           ENTER
         </button>
-        <p className="boot__hint">click CRT monitors inside the room</p>
+        <p className="boot__hint">click the CRT monitor to open FZ-DOS</p>
       </div>
     </div>
   )

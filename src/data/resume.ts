@@ -94,50 +94,21 @@ export const skills = {
   practices: ['SOLID', 'Design Patterns', 'Clean Code', 'Git', 'Agile', 'SSR/SSG/ISR', 'PWA'],
 }
 
-export const monitors: {
-  id: PanelId
-  label: string
-  screenColor: string
-  position: [number, number, number]
-  rotation: [number, number, number]
-}[] = [
-  {
-    id: 'about',
-    label: 'ABOUT',
-    screenColor: '#2a9d8f',
-    position: [-2.35, 1.15, -0.05],
-    rotation: [0, 0.4, 0],
-  },
-  {
-    id: 'work',
-    label: 'WORK',
-    screenColor: '#e9c46a',
-    position: [-0.9, 1.2, -0.35],
-    rotation: [0, 0.12, 0],
-  },
-  {
-    id: 'skills',
-    label: 'SKILLS',
-    screenColor: '#f4a261',
-    position: [0.9, 1.2, -0.35],
-    rotation: [0, -0.12, 0],
-  },
-  {
-    id: 'contact',
-    label: 'CONTACT',
-    screenColor: '#e76f51',
-    position: [2.35, 1.15, -0.05],
-    rotation: [0, -0.4, 0],
-  },
+export const dosApps: { id: PanelId; file: string; label: string; color: string }[] = [
+  { id: 'about', file: 'ABOUT.EXE', label: 'About', color: '#33ff66' },
+  { id: 'work', file: 'WORK.EXE', label: 'Work', color: '#66ccff' },
+  { id: 'skills', file: 'SKILLS.EXE', label: 'Skills', color: '#ffcc33' },
+  { id: 'contact', file: 'CONTACT.EXE', label: 'Contact', color: '#ff6688' },
 ]
 
-export const cameraViews: Record<
-  'overview' | PanelId,
-  { position: [number, number, number]; target: [number, number, number] }
-> = {
-  overview: { position: [0, 1.55, 5.0], target: [0, 1.15, -0.4] },
-  about: { position: [-1.55, 1.35, 1.85], target: [-2.35, 1.15, -0.05] },
-  work: { position: [-0.5, 1.4, 1.65], target: [-0.9, 1.2, -0.35] },
-  skills: { position: [0.5, 1.4, 1.65], target: [0.9, 1.2, -0.35] },
-  contact: { position: [1.55, 1.35, 1.85], target: [2.35, 1.15, -0.05] },
+/** Full vintage desktop stack, centered on the desk */
+export const crtMonitor = {
+  position: [0, 0.79, 0.2] as [number, number, number],
+  rotation: [0, 0, 0] as [number, number, number],
 }
+
+export const cameraViews = {
+  overview: { position: [0, 1.55, 5.1] as [number, number, number], target: [0, 1.15, 0] as [number, number, number] },
+  monitor: { position: [0, 1.42, 2.55] as [number, number, number], target: [0, 1.42, 0.35] as [number, number, number] },
+}
+
